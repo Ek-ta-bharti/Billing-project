@@ -1,1219 +1,278 @@
-<html lang="en" class=" flexbox">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>PhysicianBillPay - Login</title>
-    <meta name="description" content="Save time paying your bills with Physician Bill Pay. 
-    We offer a billing process that is secure and manageable.">
-    <meta charset="utf-8">
-    <meta name="viewport" content="minimum-scale=1,initial-scale=1,width=device-width,shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" integrity="sha256-1eQWjFSb7ut5RuaIwR6OvsmufS1T/SChmSZgVRt7Nmg=" crossorigin="anonymous">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-        html {
-            min-height: 100vh;
-            height: auto
-        }
-        
         body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://www.physicianbillpay.com/static/media/background.e6498a5a.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             min-height: 100vh;
-            height: auto
+            background-color: rgba(0, 0, 128, 0.5);
         }
         
-        #root {
-            min-height: 100vh;
-            height: auto
+        .container {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 280px;
         }
         
-        #loading {
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            border: 3px solid rgba(2, 103, 255, .733);
-            border-radius: 50%;
-            border-top-color: #1bf5e3;
-            animation: spin 1s ease-in-out infinite;
-            -webkit-animation: spin 1s ease-in-out infinite;
-            margin-right: 4px
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
-        @keyframes spin {
-            to {
-                -webkit-transform: rotate(360deg)
-            }
+        .input-container {
+            position: relative;
+            margin-bottom: 1rem;
+            border: 1px solid #1d1d1d;
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            width: 210px;
         }
         
-        @-webkit-keyframes spin {
-            to {
-                -webkit-transform: rotate(360deg)
-            }
-        }
-    </style>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="shortcut icon" href="./pbp-favicon.ico">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" integrity="sha256-3blsJd4Hli/7wCQ+bmgXfOdK7p/ZUMtPXY08jmxSSgk=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" integrity="sha256-xykLhwtLN4WyS7cpam2yiUOwr709tvF3N/r7+gOMxJw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles.css">
-    <link href="/static/css/2.69768431.chunk.css" rel="stylesheet">
-    <style data-styled="" data-styled-version="4.4.1"></style>
-    <style data-jss="" data-meta="MuiTypography">
-        .MuiTypography-root {
-            margin: 0;
+        .input-container input {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: rgb(37, 37, 37);
         }
         
-        .MuiTypography-body2 {
-            font-size: 0.875rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.43;
-            letter-spacing: 0.01071em;
-        }
-        
-        .MuiTypography-body1 {
-            font-size: 1rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.5;
-            letter-spacing: 0.00938em;
-        }
-        
-        .MuiTypography-caption {
-            font-size: 0.75rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.66;
-            letter-spacing: 0.03333em;
-        }
-        
-        .MuiTypography-button {
-            font-size: 0.875rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 500;
-            line-height: 1.75;
-            letter-spacing: 0.02857em;
-            text-transform: uppercase;
-        }
-        
-        .MuiTypography-h1 {
-            font-size: 6rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 300;
-            line-height: 1;
-            letter-spacing: -0.01562em;
-        }
-        
-        .MuiTypography-h2 {
-            font-size: 3.75rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 300;
-            line-height: 1;
-            letter-spacing: -0.00833em;
-        }
-        
-        .MuiTypography-h3 {
-            font-size: 3rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.04;
-            letter-spacing: 0em;
-        }
-        
-        .MuiTypography-h4 {
-            font-size: 2.125rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.17;
-            letter-spacing: 0.00735em;
-        }
-        
-        .MuiTypography-h5 {
-            font-size: 1.5rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.33;
-            letter-spacing: 0em;
-        }
-        
-        .MuiTypography-h6 {
-            font-size: 1.25rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 500;
-            line-height: 1.6;
-            letter-spacing: 0.0075em;
-        }
-        
-        .MuiTypography-subtitle1 {
-            font-size: 1rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.75;
-            letter-spacing: 0.00938em;
-        }
-        
-        .MuiTypography-subtitle2 {
-            font-size: 0.875rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 500;
-            line-height: 1.57;
-            letter-spacing: 0.00714em;
-        }
-        
-        .MuiTypography-overline {
-            font-size: 0.75rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 2.66;
-            letter-spacing: 0.08333em;
-            text-transform: uppercase;
-        }
-        
-        .MuiTypography-srOnly {
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
+        .input-container label {
             position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            color: rgb(125, 125, 125);
         }
         
-        .MuiTypography-alignLeft {
-            text-align: left;
+        .input-container input:focus+label,
+        .input-container input:not(:placeholder-shown)+label {
+            transform: translateY(-1.5rem);
+            font-size: 0.75rem;
+            color: red;
+            background: white;
+            padding: 0 0.25rem;
         }
         
-        .MuiTypography-alignCenter {
+        button {
+            background-color: #34668b;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            border: none;
+            cursor: pointer;
+            width: auto;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            border-top: 2px solid #4A5568;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #2a4f6b;
+        }
+        
+        .required-text {
+            display: none;
+            color: red;
+            font-size: 9px;
+            margin-top: 2px;
+        }
+        
+        .language-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        
+        .language-label {
+            margin-right: 1px;
+            font-size: 9px;
+        }
+        
+        select {
+            width: 90px;
+            font-size: 0.9rem;
+        }
+        
+        .text-center {
             text-align: center;
         }
         
-        .MuiTypography-alignRight {
-            text-align: right;
+        .powered-by {
+            text-align: center;
+            margin-top: 1rem;
         }
         
-        .MuiTypography-alignJustify {
-            text-align: justify;
+        .powered-by img {
+            display: inline-block;
+            height: 30px;
+            width: 60px;
         }
         
-        .MuiTypography-noWrap {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+        .trustwave-seal img {
+            height: 30px;
+            width: 60px;
         }
         
-        .MuiTypography-gutterBottom {
-            margin-bottom: 0.35em;
-        }
-        
-        .MuiTypography-paragraph {
-            margin-bottom: 16px;
-        }
-        
-        .MuiTypography-colorInherit {
-            color: inherit;
-        }
-        
-        .MuiTypography-colorPrimary {
-            color: #34668b;
-        }
-        
-        .MuiTypography-colorSecondary {
-            color: #89bcd9;
-        }
-        
-        .MuiTypography-colorTextPrimary {
-            color: #222723;
-        }
-        
-        .MuiTypography-colorTextSecondary {
-            color: rgba(0, 0, 0, 0.54);
-        }
-        
-        .MuiTypography-colorError {
-            color: #f44336;
-        }
-        
-        .MuiTypography-displayInline {
-            display: inline;
-        }
-        
-        .MuiTypography-displayBlock {
-            display: block;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiTouchRipple">
-        .MuiTouchRipple-root {
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            overflow: hidden;
-            position: absolute;
-            border-radius: inherit;
-            pointer-events: none;
-        }
-        
-        .MuiTouchRipple-ripple {
-            opacity: 0;
-            position: absolute;
-        }
-        
-        .MuiTouchRipple-rippleVisible {
-            opacity: 0.3;
-            animation: MuiTouchRipple-keyframes-enter 550ms cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(1);
-        }
-        
-        .MuiTouchRipple-ripplePulsate {
-            animation-duration: 200ms;
-        }
-        
-        .MuiTouchRipple-child {
-            width: 100%;
-            height: 100%;
-            display: block;
-            opacity: 1;
-            border-radius: 50%;
-            background-color: currentColor;
-        }
-        
-        .MuiTouchRipple-childLeaving {
-            opacity: 0;
-            animation: MuiTouchRipple-keyframes-exit 550ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .MuiTouchRipple-childPulsate {
-            top: 0;
-            left: 0;
-            position: absolute;
-            animation: MuiTouchRipple-keyframes-pulsate 2500ms cubic-bezier(0.4, 0, 0.2, 1) 200ms infinite;
-        }
-        
-        @-webkit-keyframes MuiTouchRipple-keyframes-enter {
-            0% {
-                opacity: 0.1;
-                transform: scale(0);
-            }
-            100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-        }
-        
-        @-webkit-keyframes MuiTouchRipple-keyframes-exit {
-            0% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-        
-        @-webkit-keyframes MuiTouchRipple-keyframes-pulsate {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(0.92);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-    </style>
-    <style data-jss="" data-meta="MuiButtonBase">
-        .MuiButtonBase-root {
-            color: inherit;
-            border: 0;
-            cursor: pointer;
-            margin: 0;
-            display: inline-flex;
-            outline: 0;
-            padding: 0;
-            position: relative;
-            align-items: center;
-            user-select: none;
-            border-radius: 0;
-            vertical-align: middle;
-            -moz-appearance: none;
-            justify-content: center;
-            text-decoration: none;
-            background-color: transparent;
-            -webkit-appearance: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .MuiButtonBase-root::-moz-focus-inner {
-            border-style: none;
-        }
-        
-        .MuiButtonBase-root.Mui-disabled {
-            cursor: default;
-            pointer-events: none;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiButton">
-        .MuiButton-root {
-            color: #222723;
-            padding: 6px 16px;
-            font-size: 0.875rem;
-            min-width: 64px;
-            box-sizing: border-box;
-            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 500;
-            line-height: 1.75;
-            border-radius: 4px;
-            letter-spacing: 0.02857em;
-            text-transform: uppercase;
-        }
-        
-        .MuiButton-root:hover {
-            text-decoration: none;
-            background-color: rgba(34, 39, 35, 0.08);
-        }
-        
-        .MuiButton-root.Mui-disabled {
-            color: rgba(0, 0, 0, 0.26);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-root:hover {
-                background-color: transparent;
-            }
-        }
-        
-        .MuiButton-root:hover.Mui-disabled {
-            background-color: transparent;
-        }
-        
-        .MuiButton-label {
-            width: 100%;
-            display: inherit;
-            align-items: inherit;
-            justify-content: inherit;
-        }
-        
-        .MuiButton-text {
-            padding: 6px 8px;
-        }
-        
-        .MuiButton-textPrimary {
-            color: #34668b;
-        }
-        
-        .MuiButton-textPrimary:hover {
-            background-color: rgba(52, 102, 139, 0.08);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-textPrimary:hover {
-                background-color: transparent;
-            }
-        }
-        
-        .MuiButton-textSecondary {
-            color: #89bcd9;
-        }
-        
-        .MuiButton-textSecondary:hover {
-            background-color: rgba(137, 188, 217, 0.08);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-textSecondary:hover {
-                background-color: transparent;
-            }
-        }
-        
-        .MuiButton-outlined {
-            border: 1px solid rgba(0, 0, 0, 0.23);
-            padding: 5px 15px;
-        }
-        
-        .MuiButton-outlined.Mui-disabled {
-            border: 1px solid rgba(0, 0, 0, 0.26);
-        }
-        
-        .MuiButton-outlinedPrimary {
-            color: #34668b;
-            border: 1px solid rgba(52, 102, 139, 0.5);
-        }
-        
-        .MuiButton-outlinedPrimary:hover {
-            border: 1px solid #34668b;
-            background-color: rgba(52, 102, 139, 0.08);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-outlinedPrimary:hover {
-                background-color: transparent;
-            }
-        }
-        
-        .MuiButton-outlinedSecondary {
-            color: #89bcd9;
-            border: 1px solid rgba(137, 188, 217, 0.5);
-        }
-        
-        .MuiButton-outlinedSecondary:hover {
-            border: 1px solid #89bcd9;
-            background-color: rgba(137, 188, 217, 0.08);
-        }
-        
-        .MuiButton-outlinedSecondary.Mui-disabled {
-            border: 1px solid rgba(0, 0, 0, 0.26);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-outlinedSecondary:hover {
-                background-color: transparent;
-            }
-        }
-        
-        .MuiButton-contained {
-            color: #222723;
-            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-            background-color: #e0e0e0;
-        }
-        
-        .MuiButton-contained:hover {
-            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-            background-color: #d5d5d5;
-        }
-        
-        .MuiButton-contained.Mui-focusVisible {
-            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-        }
-        
-        .MuiButton-contained:active {
-            box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
-        }
-        
-        .MuiButton-contained.Mui-disabled {
-            color: rgba(0, 0, 0, 0.26);
-            box-shadow: none;
-            background-color: rgba(0, 0, 0, 0.12);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-contained:hover {
-                box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-                background-color: #e0e0e0;
-            }
-        }
-        
-        .MuiButton-contained:hover.Mui-disabled {
-            background-color: rgba(0, 0, 0, 0.12);
-        }
-        
-        .MuiButton-containedPrimary {
-            color: #fff;
-            background-color: #34668b;
-        }
-        
-        .MuiButton-containedPrimary:hover {
-            background-color: rgb(44, 86, 118);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-containedPrimary:hover {
-                background-color: #34668b;
-            }
-        }
-        
-        .MuiButton-containedSecondary {
-            color: rgba(0, 0, 0, 0.87);
-            background-color: #89bcd9;
-        }
-        
-        .MuiButton-containedSecondary:hover {
-            background-color: rgb(95, 131, 151);
-        }
-        
-        @media (hover: none) {
-            .MuiButton-containedSecondary:hover {
-                background-color: #89bcd9;
-            }
-        }
-        
-        .MuiButton-colorInherit {
-            color: inherit;
-            border-color: currentColor;
-        }
-        
-        .MuiButton-textSizeSmall {
-            padding: 4px 5px;
-            font-size: 0.8125rem;
-        }
-        
-        .MuiButton-textSizeLarge {
-            padding: 8px 11px;
-            font-size: 0.9375rem;
-        }
-        
-        .MuiButton-outlinedSizeSmall {
-            padding: 3px 9px;
-            font-size: 0.8125rem;
-        }
-        
-        .MuiButton-outlinedSizeLarge {
-            padding: 7px 21px;
-            font-size: 0.9375rem;
-        }
-        
-        .MuiButton-containedSizeSmall {
-            padding: 4px 10px;
-            font-size: 0.8125rem;
-        }
-        
-        .MuiButton-containedSizeLarge {
-            padding: 8px 22px;
-            font-size: 0.9375rem;
-        }
-        
-        .MuiButton-fullWidth {
-            width: 100%;
-        }
-        
-        .MuiButton-startIcon {
-            display: inherit;
-            margin-left: -4px;
-            margin-right: 8px;
-        }
-        
-        .MuiButton-startIcon.MuiButton-iconSizeSmall {
-            margin-left: -2px;
-        }
-        
-        .MuiButton-endIcon {
-            display: inherit;
-            margin-left: 8px;
-            margin-right: -4px;
-        }
-        
-        .MuiButton-endIcon.MuiButton-iconSizeSmall {
-            margin-right: -2px;
-        }
-        
-        .MuiButton-iconSizeSmall>*:first-child {
-            font-size: 18px;
-        }
-        
-        .MuiButton-iconSizeMedium>*:first-child {
-            font-size: 20px;
-        }
-        
-        .MuiButton-iconSizeLarge>*:first-child {
-            font-size: 22px;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiInputBase">
-        .MuiInputBase-root {
-            color: #222723;
-            cursor: text;
-            display: inline-flex;
-            position: relative;
-            font-size: 1rem;
-            box-sizing: border-box;
-            align-items: center;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            line-height: 1.1875em;
-        }
-        
-        .MuiInputBase-root.Mui-disabled {
-            color: rgba(0, 0, 0, 0.38);
-            cursor: default;
-        }
-        
-        .MuiInputBase-multiline {
-            padding: 6px 0 7px;
-        }
-        
-        .MuiInputBase-multiline.MuiInputBase-marginDense {
-            padding-top: 3px;
-        }
-        
-        .MuiInputBase-fullWidth {
-            width: 100%;
-        }
-        
-        .MuiInputBase-input {
-            font: inherit;
-            color: currentColor;
-            width: 100%;
-            border: 0;
-            height: 1.1875em;
-            margin: 0;
-            display: block;
-            padding: 6px 0 7px;
-            min-width: 0;
-            background: none;
-            box-sizing: content-box;
-            animation-name: MuiInputBase-keyframes-auto-fill-cancel;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .MuiInputBase-input::-webkit-input-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-        
-        .MuiInputBase-input::-moz-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-        
-        .MuiInputBase-input:-ms-input-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-        
-        .MuiInputBase-input::-ms-input-placeholder {
-            color: currentColor;
-            opacity: 0.42;
-            transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        }
-        
-        .MuiInputBase-input:focus {
-            outline: 0;
-        }
-        
-        .MuiInputBase-input:invalid {
-            box-shadow: none;
-        }
-        
-        .MuiInputBase-input::-webkit-search-decoration {
-            -webkit-appearance: none;
-        }
-        
-        .MuiInputBase-input.Mui-disabled {
-            opacity: 1;
-        }
-        
-        .MuiInputBase-input:-webkit-autofill {
-            animation-name: MuiInputBase-keyframes-auto-fill;
-            animation-duration: 5000s;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input::-webkit-input-placeholder {
-            opacity: 0 !important;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input::-moz-placeholder {
-            opacity: 0 !important;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:-ms-input-placeholder {
-            opacity: 0 !important;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input::-ms-input-placeholder {
-            opacity: 0 !important;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-webkit-input-placeholder {
-            opacity: 0.42;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-moz-placeholder {
-            opacity: 0.42;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus:-ms-input-placeholder {
-            opacity: 0.42;
-        }
-        
-        label[data-shrink=false]+.MuiInputBase-formControl .MuiInputBase-input:focus::-ms-input-placeholder {
-            opacity: 0.42;
-        }
-        
-        @-webkit-keyframes MuiInputBase-keyframes-auto-fill {}
-        
-        @-webkit-keyframes MuiInputBase-keyframes-auto-fill-cancel {}
-        
-        .MuiInputBase-inputMarginDense {
-            padding-top: 3px;
-        }
-        
-        .MuiInputBase-inputSelect {
-            padding-right: 24px;
-        }
-        
-        .MuiInputBase-inputMultiline {
-            height: auto;
-            resize: none;
-            padding: 0;
-        }
-        
-        .MuiInputBase-inputTypeSearch {
-            -moz-appearance: textfield;
-            -webkit-appearance: textfield;
-        }
-    </style>
-    <style data-jss="" data-meta="PrivateNotchedOutline">
-        .jss93 {
-            top: -5px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            transition: padding-left 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, border-color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, border-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-            border-style: solid;
-            border-width: 1px;
-            border-radius: inherit;
-            pointer-events: none;
-        }
-        
-        .jss94 {
-            padding: 0;
-            text-align: left;
-            transition: width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-            line-height: 11px;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiOutlinedInput">
-        .MuiOutlinedInput-root {
-            position: relative;
-            border-radius: 4px;
-        }
-        
-        .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-            border-color: #222723;
-        }
-        
-        @media (hover: none) {
-            .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-                border-color: rgba(0, 0, 0, 0.23);
-            }
-        }
-        
-        .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-            border-color: #34668b;
-            border-width: 2px;
-        }
-        
-        .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
-            border-color: #f44336;
-        }
-        
-        .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline {
-            border-color: rgba(0, 0, 0, 0.26);
-        }
-        
-        .MuiOutlinedInput-colorSecondary.Mui-focused .MuiOutlinedInput-notchedOutline {
-            border-color: #89bcd9;
-        }
-        
-        .MuiOutlinedInput-adornedStart {
-            padding-left: 14px;
-        }
-        
-        .MuiOutlinedInput-adornedEnd {
-            padding-right: 14px;
-        }
-        
-        .MuiOutlinedInput-multiline {
-            padding: 18.5px 14px;
-        }
-        
-        .MuiOutlinedInput-multiline.MuiOutlinedInput-marginDense {
-            padding-top: 10.5px;
-            padding-bottom: 10.5px;
-        }
-        
-        .MuiOutlinedInput-notchedOutline {
-            border-color: rgba(0, 0, 0, 0.23);
-        }
-        
-        .MuiOutlinedInput-input {
-            padding: 18.5px 14px;
-        }
-        
-        .MuiOutlinedInput-input:-webkit-autofill {
-            border-radius: inherit;
-        }
-        
-        .MuiOutlinedInput-inputMarginDense {
-            padding-top: 10.5px;
-            padding-bottom: 10.5px;
-        }
-        
-        .MuiOutlinedInput-inputSelect {
-            padding-right: 24px;
-        }
-        
-        .MuiOutlinedInput-inputMultiline {
-            padding: 0;
-        }
-        
-        .MuiOutlinedInput-inputAdornedStart {
-            padding-left: 0;
-        }
-        
-        .MuiOutlinedInput-inputAdornedEnd {
-            padding-right: 0;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiFormLabel">
-        .MuiFormLabel-root {
-            color: rgba(0, 0, 0, 0.54);
-            padding: 0;
-            font-size: 1rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1;
-            letter-spacing: 0.00938em;
-        }
-        
-        .MuiFormLabel-root.Mui-focused {
-            color: #34668b;
-        }
-        
-        .MuiFormLabel-root.Mui-disabled {
-            color: rgba(0, 0, 0, 0.38);
-        }
-        
-        .MuiFormLabel-root.Mui-error {
-            color: #f44336;
-        }
-        
-        .MuiFormLabel-colorSecondary.Mui-focused {
-            color: #89bcd9;
-        }
-        
-        .MuiFormLabel-asterisk.Mui-error {
-            color: #f44336;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiInputLabel">
-        .MuiInputLabel-root {
-            display: block;
-            transform-origin: top left;
-        }
-        
-        .MuiInputLabel-formControl {
-            top: 0;
-            left: 0;
-            position: absolute;
-            transform: translate(0, 24px) scale(1);
-        }
-        
-        .MuiInputLabel-marginDense {
-            transform: translate(0, 21px) scale(1);
-        }
-        
-        .MuiInputLabel-shrink {
-            transform: translate(0, 1.5px) scale(0.75);
-            transform-origin: top left;
-        }
-        
-        .MuiInputLabel-animated {
-            transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-        }
-        
-        .MuiInputLabel-filled {
-            z-index: 1;
-            transform: translate(12px, 20px) scale(1);
-            pointer-events: none;
-        }
-        
-        .MuiInputLabel-filled.MuiInputLabel-marginDense {
-            transform: translate(12px, 17px) scale(1);
-        }
-        
-        .MuiInputLabel-filled.MuiInputLabel-shrink {
-            transform: translate(12px, 10px) scale(0.75);
-        }
-        
-        .MuiInputLabel-filled.MuiInputLabel-shrink.MuiInputLabel-marginDense {
-            transform: translate(12px, 7px) scale(0.75);
-        }
-        
-        .MuiInputLabel-outlined {
-            z-index: 1;
-            transform: translate(14px, 20px) scale(1);
-            pointer-events: none;
-        }
-        
-        .MuiInputLabel-outlined.MuiInputLabel-marginDense {
-            transform: translate(14px, 12px) scale(1);
-        }
-        
-        .MuiInputLabel-outlined.MuiInputLabel-shrink {
-            transform: translate(14px, -6px) scale(0.75);
-        }
-    </style>
-    <style data-jss="" data-meta="MuiFormControl">
-        .MuiFormControl-root {
-            border: 0;
-            margin: 0;
-            display: inline-flex;
-            padding: 0;
-            position: relative;
-            min-width: 0;
-            flex-direction: column;
-            vertical-align: top;
-        }
-        
-        .MuiFormControl-marginNormal {
-            margin-top: 16px;
-            margin-bottom: 8px;
-        }
-        
-        .MuiFormControl-marginDense {
-            margin-top: 8px;
-            margin-bottom: 4px;
-        }
-        
-        .MuiFormControl-fullWidth {
-            width: 100%;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiFormHelperText">
-        .MuiFormHelperText-root {
-            color: rgba(0, 0, 0, 0.54);
-            margin: 0;
+        .version {
+            text-align: center;
+            margin-top: 1rem;
             font-size: 0.75rem;
-            margin-top: 8px;
-            min-height: 1em;
-            text-align: left;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1em;
-            letter-spacing: 0.03333em;
-        }
-        
-        .MuiFormHelperText-root.Mui-disabled {
-            color: rgba(0, 0, 0, 0.38);
-        }
-        
-        .MuiFormHelperText-root.Mui-error {
-            color: #f44336;
-        }
-        
-        .MuiFormHelperText-marginDense {
-            margin-top: 4px;
-        }
-        
-        .MuiFormHelperText-contained {
-            margin: 8px 14px 0;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiTextField">
-
-    </style>
-    <style data-jss="" data-meta="MuiLink">
-        .MuiLink-underlineNone {
-            text-decoration: none;
-        }
-        
-        .MuiLink-underlineHover {
-            text-decoration: none;
-        }
-        
-        .MuiLink-underlineHover:hover {
-            text-decoration: underline;
-        }
-        
-        .MuiLink-underlineAlways {
-            text-decoration: underline;
-        }
-        
-        .MuiLink-button {
-            border: 0;
-            cursor: pointer;
-            margin: 0;
-            outline: 0;
-            padding: 0;
-            position: relative;
-            user-select: none;
-            border-radius: 0;
-            vertical-align: middle;
-            -moz-appearance: none;
-            background-color: transparent;
-            -webkit-appearance: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .MuiLink-button::-moz-focus-inner {
-            border-style: none;
-        }
-        
-        .MuiLink-button.Mui-focusVisible {
-            outline: auto;
-        }
-    </style>
-    <style data-jss="" data-meta="MuiCssBaseline">
-        html {
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-        }
-        
-        strong,
-        b {
-            font-weight: bolder;
-        }
-        
-        body {
-            color: #222723;
-            margin: 0;
-            font-size: 0.875rem;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-            font-weight: 400;
-            line-height: 1.43;
-            letter-spacing: 0.01071em;
-            background-color: rgb(242, 242, 242);
-        }
-        
-        @media print {
-            body {
-                background-color: #fff;
-            }
-        }
-        
-        body::backdrop {
-            background-color: rgb(242, 242, 242);
+            color: rgb(174, 168, 168);
         }
     </style>
 </head>
 
-<body><noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" style="height:100%;min-height:100%">
-        <div class="sc-bnXvFD gzhCub">
-            <div src="/static/media/background.e6498a5a.jpeg" id="login-container" class="sc-brqgnP dfaEvb">
-                <div id="login-panel" class="sc-jAaTju pNPFj"><img src="/static/media/physician-bill-pay.ba3a124c.png" alt="Physician Bill Pay" id="pbp-logo" style="width: 300px; height: 50px;">
-                    <p class="MuiTypography-root MuiTypography-body1" id="account-number-and-patient-dob" style="text-align: center;">Acct Number/Patient-Last Name/DOB</p>
-                    <form id="login-form" style="display: flex; flex-direction: column; align-items: center;"><input name="fakeUsername" type="text" id="username-txt" value="" style="display: none;">
-                        <div class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-error Mui-error" data-shrink="false" for="login-txt-name" id="login-txt-name-label">Account Number</label>
-                            <div
-                                class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl"><input aria-invalid="true" autocomplete="off" id="login-txt-name" name="accountNumber" placeholder="P12345678" type="text" class="MuiInputBase-input MuiOutlinedInput-input" value="" fdprocessedid="3p7miv" aria-describedby="login-txt-name-helper-text">
-                                <fieldset
-                                    aria-hidden="true" class="jss93 MuiOutlinedInput-notchedOutline" style="padding-left: 46.125px;">
-                                    <legend class="jss94" style="width: 0.01px;"><span>​</span></legend>
-                                    </fieldset>
-                        </div>
-                        <p class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error" id="login-txt-name-helper-text">Required</p>
-                </div>
-                <div class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined" data-shrink="false" for="login-txt-last-name" id="login-txt-last-name-label">Last Name</label>
-                    <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"><input aria-invalid="false" autocomplete="off" id="login-txt-last-name" name="lastName" type="text" class="MuiInputBase-input MuiOutlinedInput-input" value="" fdprocessedid="vz7frx">
-                        <fieldset aria-hidden="true" class="jss93 MuiOutlinedInput-notchedOutline"
-                            style="padding-left: 34.125px;">
-                            <legend class="jss94" style="width: 0.01px;"><span>​</span></legend>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined" data-shrink="false" for="login-txt-dob" id="login-txt-dob-label">Patient DOB</label>
-                    <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"><input aria-invalid="false" id="login-txt-dob" name="DOB" placeholder="mm/dd/yyyy" type="text" class="MuiInputBase-input MuiOutlinedInput-input" value="" fdprocessedid="s9sjdg">
-                        <fieldset aria-hidden="true" class="jss93 MuiOutlinedInput-notchedOutline"
-                            style="padding-left: 37.5px;">
-                            <legend class="jss94" style="width: 0.01px;"><span>​</span></legend>
-                        </fieldset>
-                    </div>
-                </div>
-                <div id="login-language-dropdown" class="sc-htpNat fJjhOP" style="margin: 16px 0px;"><label for="language-selection-box" class="sc-bxivhb huhYgw" style="margin-right: 8px;">Site Language:</label><select id="language-selection-box" fdprocessedid="f07w1e"><option value="en" id="language-option-en">English</option><option value="es" id="language-option-es">Spanish</option></select></div>
-                <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary" tabindex="0" type="submit" id="login-btn-login" fdprocessedid="zgarf4"><span class="MuiButton-label"><span id="login-btn-text">Login</span></span><span class="MuiTouchRipple-root"></span></button>
-                    </form>
-                    <div id="certificate-container" class="sc-iRbamj dtypuf">
-                        <div id="certificate-group" class="sc-jlyJG irzOAi"><img id="trustwaveSealImage" src="https://sealserver.trustwave.com/seal_image.php?customerId=w6oj3BufDtNVfsRHKIMpiViTHPZVM8&amp;size=105x54&amp;style=invert" alt="This site is protected by Trustwave's Trusted Commerce program"
-                                title="This site is protected by Trustwave's Trusted Commerce program" class="sc-gipzik gONwrN" style="cursor: pointer;"></div>
-                        <div id="ventra-group" class="sc-Rmtcm oVbMv">
-                            <p id="powered-by-text" class="sc-csuQGl cpOEol">Powered By</p>
-                            <a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="https://ventrahealth.com/" target="__blank" referrerpolicy="noopener noreferrer"><img id="ventra-logo" src="data:image/png;base64,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"
-                                    alt="" class="sc-bRBYWo dqsMkY"></a>
-                        </div>
-                    </div><span id="build-version" style="color: lightgrey;">3.0.0</span></div>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <img alt="PhysicianBillPay Logo" src="https://www.physicianbillpay.com/static/media/physician-bill-pay.ba3a124c.png" width="250" />
+            <p class="text-sm" style="color: #4A5568;">Acct Number/Patient-Last Name/DOB</p>
         </div>
+        <form action="#" method="POST" onsubmit="return validateInputs()">
+            <div class="input-container">
+                <input type="text" id="account-number-1" placeholder=" " required pattern="[A-Za-z][0-9]{6}">
+                <label for="account-number-1">Account Number</label>
+                <p class="required-text">Required</p>
+            </div>
+
+            <div class="input-container">
+                <input id="last-name" name="last-name" type="text" placeholder=" " required>
+                <label for="last-name">Last Name</label>
+                <p class="required-text">Required</p>
+            </div>
+
+            <div class="input-container">
+                <input id="dob" name="dob" type="text" placeholder=" " required onfocus="this.placeholder='mm/dd/yyyy'">
+                <label for="dob">Patient DOB</label>
+                <p class="required-text">Required</p>
+            </div>
+
+            <div class="input-group language-group">
+                <label class="language-label" for="language">Site Language:</label>
+                <select id="language" name="language">
+                    <option>English</option>
+                    <option>Spanish</option>
+                </select>
+            </div>
+
+            <div class="text-center">
+                <button type="submit">LOGIN</button>
+            </div>
+            <hr>
+        </form>
+        <div class="text-center trustwave-seal">
+            <img alt="Trustwave Seal" src="image/seal_image.png" width="105" />
+        </div>
+        <div class="text-center powered-by">
+            <p class="text-sm" style="color: #4A5568;">Powered By</p>
+            <img alt="Ventra Health Logo" src="image/download.png" width="100" />
+        </div>
+        <div class="version">3.0.0</div>
     </div>
-    </div>
-    <script src="modernizr-custom.js" type="text/javascript"></script>
     <script>
-        ! function(e) {
-            function r(r) {
-                for (var n, p, l = r[0], a = r[1], f = r[2], c = 0, s = []; c < l.length; c++) p = l[c], Object.prototype.hasOwnProperty.call(o, p) && o[p] && s.push(o[p][0]), o[p] = 0;
-                for (n in a) Object.prototype.hasOwnProperty.call(a, n) && (e[n] = a[n]);
-                for (i && i(r); s.length;) s.shift()();
-                return u.push.apply(u, f || []), t()
+        function enforceAccountNumberPattern(input) {
+            let value = input.value.replace(/[^A-Za-z0-9]/g, '');
+            input.value = value;
+        }
+
+        function enforceDOBPattern(input) {
+            let value = input.value.replace(/[^0-9\/]/g, '');
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+            if (value.length === 2 || value.length === 5) {
+                value += '/';
+            }
+            input.value = value;
+        }
+
+        function isValidDate(dob) {
+            const parts = dob.split('/');
+            if (parts.length !== 3) return false;
+
+            const month = parseInt(parts[0], 10);
+            const day = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10);
+
+            if (isNaN(month) || isNaN(day) || isNaN(year)) return false;
+
+            if (month < 1 || month > 12 || day < 1 || day > 31) return false;
+
+            const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            if (month === 2) {
+                const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+                if (day > (isLeapYear ? 29 : 28)) return false;
+            } else if (day > monthDays[month - 1]) {
+                return false;
             }
 
-            function t() {
-                for (var e, r = 0; r < u.length; r++) {
-                    for (var t = u[r], n = !0, l = 1; l < t.length; l++) {
-                        var a = t[l];
-                        0 !== o[a] && (n = !1)
-                    }
-                    n && (u.splice(r--, 1), e = p(p.s = t[0]))
+            return true;
+        }
+
+        function validateInputs() {
+            let valid = true;
+            document.querySelectorAll('.input-container input').forEach(input => {
+                const requiredText = input.parentElement.querySelector('.required-text');
+                requiredText.style.display = 'none';
+                input.parentElement.classList.remove('border-red-500');
+
+                if (input.value.trim() === '') {
+                    requiredText.style.display = 'block';
+                    input.parentElement.classList.add('border-red-500');
+                    valid = false;
                 }
-                return e
-            }
-            var n = {},
-                o = {
-                    1: 0
-                },
-                u = [];
 
-            function p(r) {
-                if (n[r]) return n[r].exports;
-                var t = n[r] = {
-                    i: r,
-                    l: !1,
-                    exports: {}
-                };
-                return e[r].call(t.exports, t, t.exports, p), t.l = !0, t.exports
-            }
-            p.m = e, p.c = n, p.d = function(e, r, t) {
-                p.o(e, r) || Object.defineProperty(e, r, {
-                    enumerable: !0,
-                    get: t
-                })
-            }, p.r = function(e) {
-                "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
-                    value: "Module"
-                }), Object.defineProperty(e, "__esModule", {
-                    value: !0
-                })
-            }, p.t = function(e, r) {
-                if (1 & r && (e = p(e)), 8 & r) return e;
-                if (4 & r && "object" == typeof e && e && e.__esModule) return e;
-                var t = Object.create(null);
-                if (p.r(t), Object.defineProperty(t, "default", {
-                        enumerable: !0,
-                        value: e
-                    }), 2 & r && "string" != typeof e)
-                    for (var n in e) p.d(t, n, function(r) {
-                        return e[r]
-                    }.bind(null, n));
-                return t
-            }, p.n = function(e) {
-                var r = e && e.__esModule ? function() {
-                    return e.default
-                } : function() {
-                    return e
-                };
-                return p.d(r, "a", r), r
-            }, p.o = function(e, r) {
-                return Object.prototype.hasOwnProperty.call(e, r)
-            }, p.p = "/";
-            var l = this["webpackJsonpdoctor-app"] = this["webpackJsonpdoctor-app"] || [],
-                a = l.push.bind(l);
-            l.push = r, l = l.slice();
-            for (var f = 0; f < l.length; f++) r(l[f]);
-            var i = a;
-            t()
-        }([])
+                if (input.id === 'account-number-1') {
+                    const accountNumberPattern = /^[A-Za-z]{1}\d{6}$/;
+                    if (!accountNumberPattern.test(input.value)) {
+                        requiredText.style.display = 'block';
+                        input.parentElement.classList.add('border-red-500');
+                        valid = false;
+                    }
+                }
+
+                if (input.id === 'dob') {
+                    if (!isValidDate(input.value)) {
+                        requiredText.style.display = 'block';
+                        input.parentElement.classList.add('border-red-500');
+                        valid = false;
+                    }
+                }
+            });
+            return valid;
+        }
+
+        document.getElementById('account-number-1').addEventListener('input', function() {
+            enforceAccountNumberPattern(this);
+        });
+
+        document.getElementById('dob').addEventListener('input', function() {
+            enforceDOBPattern(this);
+        });
     </script>
-    <script src="/static/js/2.dcb9e61c.chunk.js"></script>
-    <script src="/static/js/main.eebdc63d.chunk.js"></script><span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body>
+</body>
 
 </html>

