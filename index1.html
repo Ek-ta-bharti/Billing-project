@@ -53,72 +53,79 @@
 
 <body>
     <div class="container">
-        <div class="section">
-            <h2>Billing Address</h2>
-            <form action="index1.html" method="GET">
+        <!-- <form action="index1.html" method="GET" id="step2Form"> -->
+        <from id="step2Form">
+            <div class="section">
+                <h2>Billing Address</h2>
                 <label for="account-number">Account Number:</label>
-                <input type="text" id="account-number" required>
+                <input type="text" id="account-number" name="accountNumber" required>
 
                 <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" required>
+                <input type="text" id="last-name" name="lastName" required>
 
                 <label for="dob">Patient DOB:</label>
-                <input type="text" id="dob" required>
+                <input type="text" id="dob" name="dob" required>
 
                 <label for="phone">Phone-no:</label>
-                <input type="tel" id="phone" required>
+                <input type="tel" id="phone" name="phone" required>
 
                 <label for="amount">Amount:</label>
-                <input type="text" id="amount" required>
+                <input type="text" id="amount" name="amount" required>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" required>
+                <input type="email" id="email" name="email" required>
 
                 <label for="address">Address:</label>
-                <input type="text" id="address" required>
+                <input type="text" id="address" name="address" required>
 
                 <label for="city">City:</label>
-                <input type="text" id="city" required>
+                <input type="text" id="city" name="city" required>
 
                 <label for="state">State:</label>
-                <input type="text" id="state" required>
+                <input type="text" id="state" name="state" required>
 
                 <label for="zip">Zip:</label>
-                <input type="text" id="zip" required>
-            </form>
-        </div>
+                <input type="text" id="zip" name="zip" required>
+            </div>
 
-        <div class="section">
-            <h3>Payment</h3>
-            <form id="payment-form">
+            <div class="section">
+                <h3>Payment</h3>
                 <label for="card-name">Name on Card:</label>
-                <input type="text" id="card-name" required>
+                <input type="text" id="card-name" name="cardName" required>
 
                 <label for="card-number">Credit Card Number:</label>
-                <input type="text" id="card-number" required>
+                <input type="text" id="card-number" name="cardNumber" pattern="\d{16}" required>
 
                 <label for="expiry">Expiry MM/YY:</label>
-                <input type="text" id="expiry" required>
+                <input type="text" id="expiry" name="expiry" required>
 
                 <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" required>
+                <input type="text" id="cvv" name="cvv" pattern="\d{3,4}" required>
 
                 <button type="submit">Submit</button>
+            </div>
             </form>
-        </div>
     </div>
 
-    <script>
-        // Retrieve values from localStorage and autofill
-        document.getElementById('account-number').value = localStorage.getItem('accountNumber');
-        document.getElementById('last-name').value = localStorage.getItem('lastName');
-        document.getElementById('dob').value = localStorage.getItem('dob');
 
-        // Optionally, clear localStorage after use
-        localStorage.removeItem('accountNumber');
-        localStorage.removeItem('lastName');
-        localStorage.removeItem('dob');
+    <script>
+        // Get URL parameters and fill the fields automatically
+        const urlParams = new URLSearchParams(window.location.search);
+        const accountNumber = urlParams.get('accountNumber');
+        const lastName = urlParams.get('lastName');
+        const dob = urlParams.get('dob');
+
+        // Set values in the form
+        document.getElementById('account-number').value = accountNumber || '';
+        document.getElementById('last-name').value = lastName || '';
+        document.getElementById('dob').value = dob || '';
+
+        document.getElementById('step2Form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Form submitted successfully with all details!");
+        });
     </script>
+
 </body>
 
 </html>
