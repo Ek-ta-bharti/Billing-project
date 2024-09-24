@@ -188,10 +188,12 @@
             <p class="text-sm" style="color: #4A5568;">Acct Number/Patient-Last Name/DOB</p>
         </div>
         <form id="step1Form" method="GET">
+
             <div>
                 <div class="input-container">
-                    <input type="text" id="account-number-1" placeholder=" " required pattern="[A-Za-z][0-9]{6}" onfocus="this.placeholder='P123456'" onblur="this.placeholder=''">
+                    <input type="text" id="account-number-1" placeholder=" " onfocus="this.placeholder='P123456'" onblur="this.placeholder=''">
                     <label for="account-number-1">Account Number</label>
+                    <!-- required pattern="[A-Za-z][0-9]{6,}" -->
                 </div>
                 <p class="required-text">Required</p>
 
@@ -202,7 +204,7 @@
                 <p class="required-text">Required</p>
 
                 <div class="input-container">
-                    <input id="dob" name="dob" type="text" placeholder=" " required onfocus="this.placeholder='mm/dd/yyyy'" onblur="this.placeholder=''">
+                    <input id="dob" type="text" name="dob" placeholder=" " required onfocus="this.placeholder='mm/dd/yyyy'" onblur="this.placeholder=''">
                     <label for="dob">Patient DOB</label>
                 </div>
                 <p class="required-text">Required</p>
@@ -229,23 +231,6 @@
         <div class="version">3.0.0</div>
     </div>
     <script>
-        function enforceAccountNumberPattern(input) {
-            let value = input.value;
-            let filteredValue = '';
-
-            if (value.length > 0 && /^[A-Za-z]$/.test(value.charAt(0))) {
-                filteredValue = value.charAt(0);
-            }
-
-            for (let i = 1; i < value.length; i++) {
-                if (/\d/.test(value.charAt(i))) {
-                    filteredValue += value.charAt(i);
-                }
-            }
-
-            input.value = filteredValue;
-        }
-
         function enforceDOBPattern(input) {
             let value = input.value;
             let filteredValue = '';
@@ -326,12 +311,20 @@
                     input.parentElement.classList.remove('border-red-500');
                 }
 
+
+
+
                 if (input.id === 'account-number-1') {
-                    const accountNumberPattern = /^[A-Za-z]{1}\d{6}$/;
-                    if (!accountNumberPattern.test(input.value)) {
+                    const accountNumberPattern = /^[A-Za-z]\d{6,}$/;
+                    if (input.value.length < 7) {
                         requiredText.style.display = 'block';
                         input.parentElement.classList.add('border-red-500');
-                        requiredText.textContent = 'Account Number must start with a letter followed by 6 digits';
+                        requiredText.textContent = 'Required';
+                        valid = false;
+                    } else if (!accountNumberPattern.test(input.value)) {
+                        requiredText.style.display = 'block';
+                        input.parentElement.classList.add('border-red-500');
+                        requiredText.textContent = 'Required';
                         valid = false;
                     } else {
                         requiredText.style.display = 'none';
@@ -339,11 +332,12 @@
                     }
                 }
 
+
                 if (input.id === 'dob') {
                     if (!isValidDate(input.value)) {
                         requiredText.style.display = 'block';
                         input.parentElement.classList.add('border-red-500');
-                        requiredText.textContent = 'Enter a valid date in mm/dd/yyyy format';
+                        requiredText.textContent = 'Required';
                         valid = false;
                     } else {
                         requiredText.style.display = 'none';
@@ -375,6 +369,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>
